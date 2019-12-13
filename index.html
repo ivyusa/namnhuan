@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Chương trình check năm nhuận</h1>
+    <input type="text" id="nam" min=0></input>
+    <button onclick="check()">Check năm nhuận</button>
+    <p id="ketqua"></p>
+    <script>
+        function check() {
+            let year = document.getElementById("nam").value;
+            if(!isNaN(year)){
+                let isLeapYear = false;
+                let isDivisibleBy4 = year % 4 == 0;
+                if (isDivisibleBy4) {
+                    let isDivisibleBy100 = year % 100 == 0;
+                    if (isDivisibleBy100) {
+                        let isDivisibleBy400 = year % 400 == 0;
+                        if (isDivisibleBy400) {
+                            isLeapYear = true;
+                        }
+                    } else {
+                        isLeapYear = true;
+                    }
+                }
+
+                if (isLeapYear) {
+                document.getElementById("ketqua").innerHTML = year + " là năm nhuận";
+                } else {
+                    document.getElementById("ketqua").innerHTML = year + " không phải là năm nhuận";
+                }
+            }else{
+                document.getElementById("ketqua").innerHTML = "Xin hãy nhập 1 số";
+            }
+        }
+    </script>
+</body>
+
+</html>
